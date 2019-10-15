@@ -1,22 +1,11 @@
 {
     "configurations": [
+
         {
             "type": "java",
-            "name": "CodeLens (Launch) - FirstClass",
+            "name": "JAVA",
             "request": "launch",
-            "mainClass": "FirstClass"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Mmain",
-            "request": "launch",
-            "mainClass": "Mmain"
-        },
-        {
-            "type": "java",
-            "name": "CodeLens (Launch) - Main",
-            "request": "launch",
-            "mainClass": "Main"
+            "cwd": "${workspaceFolder}",
         }
     ]
 }
