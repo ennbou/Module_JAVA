@@ -4,7 +4,7 @@ Alors la JDBC (Java Database Connectivity) est une API(application programming i
 
 ## la presentation de JDBC avec une schema :
 
-[image](./img/draw/JDBC.jpg)
+![image](./img/draw/JDBC.jpg)
 
 ## Driver Manager
 
