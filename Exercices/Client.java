@@ -10,7 +10,7 @@ class Client{
         this.nom = nom;
         this.prenom = prenom;
         nbr++;
-        this.nbr = nbr+1;
+        nbr = nbr+1;
     }
 
     static void inc(){
