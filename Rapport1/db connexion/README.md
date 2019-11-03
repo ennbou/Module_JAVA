@@ -17,18 +17,21 @@ les JDBC Classes sont dans le package `java.sql` et `javax.sql`.
 pour un premier pas on a besoin de les classes suivantes:
 
 1. **DriverManager**
-    * ```Connection``` *getConnextion(...)*
-    * ```int``` *getLoginTimeout(...)*
-    * *registerDriver(...)*
+
+    * >```Connection``` *getConnextion(...)*
+    * >```int``` *getLoginTimeout(...)*
+    * >*registerDriver(...)*
 
 1. **Connection**
-    * ```Statement``` createStatement(...)
-    * close()
+
+    * >```Statement``` createStatement(...)
+    * >close()
 
 1. **Statement**
-    * ```ResultSet``` executeQuery(...)
-    * ```boolean``` execute(...)
+
+    * >```ResultSet``` executeQuery(...)
+    * >```boolean``` execute(...)
 
 1. **ResultSet**
-    * ```Boolean``` next()
-    * ```T``` get**T**(...) // T : (Boolean, Integer, String, Date, ...)
+    * >```Boolean``` next()
+    * >```T``` get**T**(...) // T : (Boolean, Integer, String, Date, ...)
