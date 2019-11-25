@@ -2,6 +2,11 @@ package app;
 
 import java.sql.*;
 
+interface cc {
+    public abstract void test();
+}
+
+    
 public class App {
     public static void main(String[] args) throws Exception {
         try {

@@ -26,3 +26,8 @@ architecture
 module de analyse
 module de conception
 module implemantaion
+
+UML :
+
+les elements
+diagram statique/dynamique

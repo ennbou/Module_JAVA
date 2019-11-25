@@ -7,6 +7,10 @@ import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.Scanner;
 
+interface cc {
+    public abstract void test();
+}
+
 public class GestionClient {
     private static List<Client> clients;
 
@@ -62,8 +66,20 @@ public class GestionClient {
         }
     }
 
-    public void modifier(){
-        
+    public void modifierNom(){
+
+    }
+
+    public void modifierPrenom(){
+        if(client == null) return;
+        System.out.println("entre le nom : ");
+        client.setNom(scanner.nextLine());
+        System.out.println("entre le prenom : ");
+        client.setNom(scanner.nextLine());
+        System.out.println("entre le tele : ");
+        client.setNom(scanner.nextLine());
+        System.out.println("entre le email : ");
+        client.setNom(scanner.nextLine());
     }
 
     public Client getClientById(int index) {
