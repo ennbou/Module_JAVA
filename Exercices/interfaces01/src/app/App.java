@@ -1,6 +1,9 @@
 package app;
 
 import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Map;
 
 abstract class Salarie {
     protected String nom;
@@ -28,10 +31,10 @@ class Projet{
     private double ind;
     private Date date;
 
-    public Projet(String nom, double x, double y) {
+    public Projet(String nom, double montantTotal, double ind) {
         this.nom = nom;
-        this.x = x;
-        this.y = y;
+        this.montantTotal = montantTotal;
+        this.ind = ind;
     }
 
     
