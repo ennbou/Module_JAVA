@@ -1,1 +1,33 @@
-.btn {-fx-background-color: cornflowerblue;-fx-padding: 5px;-fx-border-radius: 0;-fx-box-sizing: border-box}
+.title{
+    -fx-pref-width: 100%;
+    -fx-pref-height: 80px;
+    -fx-text-fill: #ffffff;     
+    -fx-font-size: 18pt;
+    -fx-padding	: 5px;
+    -fx-margin: 10px 5px;
+    -fx-text-alignment: center;
+}
+
+
+.btn{
+    -fx-font: 14pt "Serif";
+    -fx-pref-width: 330px;
+    -fx-border-radius: 0;
+    -fx-text-fill:white;
+    -fx-padding: 10 10 10 10;
+    -fx-background-color:  #2889e4;
+    -fx-background-radius:0;
+    -fx-border-width: 0 0 0 0;
+    -fx-background-insets: 0;
+}
+
+.layoutBtn{
+    
+    -fx-padding: 10 ;
+    -fx-background-color:  #b6b6b68a;
+}
+
+.codetxt,.designationtxt,.prixtxt{
+    -fx-font: 14pt "arial";
+    -fx-padding: 10 ;
+}
