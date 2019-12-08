@@ -137,7 +137,7 @@ class ProduitDAOIMPL implements ProduitDAO {
 
 }
 
-class DataConnection {
+final class DataConnection {
     private static Connection c = null;
     private static final String url = "jdbc:mysql://127.2.2.2/test_db?useSSL=false";
     private static final String user = "ennbou";

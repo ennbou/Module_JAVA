@@ -45,8 +45,7 @@ public class WindowsP extends Scene {
     private Text prixTxt;
 
     private TextField searchFld;
-    private TextField codeFld
-    ;
+    private TextField codeFld;
     private TextField designationFld;
     private TextField prixFld;
 
@@ -65,8 +64,8 @@ public class WindowsP extends Scene {
         initVars();
         structLayouts();
         stylingNode();
+        setActions();
     }
-
 
     public void initVars() {
         title = new Text("gestion de produits");
@@ -100,14 +99,15 @@ public class WindowsP extends Scene {
         designationCol.setCellValueFactory(new PropertyValueFactory<Produit, String>("designation"));
         prixCol.setCellValueFactory(new PropertyValueFactory<Produit, Double>("prix"));
 
-        codeCol.setStyle( "-fx-alignment: CENTER-RIGHT;");
-        prixCol.setStyle( "-fx-alignment: CENTER-RIGHT;");
+        codeCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+        prixCol.setStyle("-fx-alignment: CENTER-RIGHT;");
 
         ProduitDAO produitGestion = new ProduitDAOIMPL();
 
-        for(Produit p : produitGestion.findAll()){
-            data.add(p);
-        }
+        data.addAll(produitGestion.findAll());
+
+        layoutTabl.setEditable(true);
+        codeCol.setEditable(true);
     }
 
     public void stylingNode() {
@@ -116,7 +116,7 @@ public class WindowsP extends Scene {
 
         title.getStyleClass().add("title");
 
-        layoutBtn.setPrefWidth(WIDTH_SCENE/4);
+        layoutBtn.setPrefWidth(WIDTH_SCENE / 4);
         layoutBtn.setMinWidth(120);
         layoutBtn.setFillWidth(true);
 
@@ -131,7 +131,7 @@ public class WindowsP extends Scene {
 
         layoutFld.setHgap(10);
         layoutFld.setVgap(10);
-        layoutFld.setPadding(new Insets(20, 5,20, 5));
+        layoutFld.setPadding(new Insets(20, 5, 20, 5));
 
         title.setFont(Font.font("arial", 14));
 
@@ -139,7 +139,8 @@ public class WindowsP extends Scene {
         designationTxt.getStyleClass().add("designationtxt");
         prixTxt.getStyleClass().add("prixtxt");
 
-        layoutTitle.setBackground(new Background(new BackgroundFill(Color.rgb(40, 40, 40), CornerRadii.EMPTY, Insets.EMPTY)));
+        layoutTitle.setBackground(
+                new Background(new BackgroundFill(Color.rgb(40, 40, 40), CornerRadii.EMPTY, Insets.EMPTY)));
         layoutTitle.setPrefHeight(80);
         title.setFill(Color.WHITE);
 
@@ -156,8 +157,7 @@ public class WindowsP extends Scene {
         layoutFld.add(designationTxt, 0, 1);
         layoutFld.add(prixTxt, 0, 2);
 
-        layoutFld.add(codeFld
-        , 1, 0);
+        layoutFld.add(codeFld, 1, 0);
         layoutFld.add(designationFld, 1, 1);
         layoutFld.add(prixFld, 1, 2);
 
@@ -170,4 +170,20 @@ public class WindowsP extends Scene {
         layoutTabl.getColumns().add(designationCol);
         layoutTabl.getColumns().add(prixCol);
     }
+
+    public void setActions() {
+        ajouter.setOnAction(e -> {
+            Produit p = new Produit(Long.parseLong(codeFld.getText()), designationFld.getText(),
+                    Double.parseDouble(prixFld.getText()));
+            data.add(p);
+            produitGestion.create(p);
+        });
+
+        FilteredList<Produit> listFilter = new FilteredList<>(data);
+        searchFld.textProperty().addListener((observable, oldValue, newValue) -> {
+            listFilter.setPredicate(produit -> newValue.isEmpty() || produit.getDesignation().toLowerCase().contains(newValue.toLowerCase()));
+            layoutTabl.setItems(listFilter);
+        });
+    }
+
 }
