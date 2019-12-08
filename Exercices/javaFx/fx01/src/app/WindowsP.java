@@ -1,15 +1,21 @@
 package app;
 
+import javafx.scene.control.ButtonType;
+
+import java.util.Optional;
+
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.collections.transformation.FilteredList;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
+import javafx.scene.control.Alert;
 import javafx.scene.control.Button;
 import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Background;
@@ -89,6 +95,7 @@ public class WindowsP extends Scene {
         prixFld = new TextField();
 
         searchFld = new TextField();
+        searchFld.promptTextProperty().set("designation");
 
         data = FXCollections.observableArrayList();
         layoutTabl = new TableView<>(data);
@@ -220,6 +227,23 @@ public class WindowsP extends Scene {
 
         supprimer.setOnAction(e -> {
 
+            int index = layoutTabl.getSelectionModel().getSelectedIndex();
+            Produit p = layoutTabl.getSelectionModel().getSelectedItem();
+            if(p == null) return;
+            Alert alert = new Alert(AlertType.CONFIRMATION);
+            alert.setTitle("Confirmation");
+            alert.setHeaderText("Produit (" + p.getCode() + ") " + p.getDesignation() + " : " + p.getPrix());
+            alert.setContentText("sure vous voulez suppreme?");
+
+            Optional<ButtonType> result = alert.showAndWait();
+            if (result.get() == ButtonType.OK) {
+                System.out.println("ok");
+                if (produitGestion.supprime(p.getCode())) {
+                    layoutTabl.getItems().remove(index);
+                }
+            } else {
+                System.out.println("no");
+            }
         });
 
         FilteredList<Produit> listFilter = new FilteredList<>(data);

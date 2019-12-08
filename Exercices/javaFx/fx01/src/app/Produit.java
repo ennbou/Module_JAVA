@@ -54,12 +54,15 @@ interface ProduitDAO {
     static final String SQL_INSERT = "INSERT INTO table1 VALUES(null,?,?)";
     static final String SQL_SELECT_NOM = "SELECT * FROM table WHERE designiation = ?";
     static final String SQL_UPDATE = "UPDATE table1 SET designation = ? , prix = ? WHERE id = ?";
+    static final String SQL_DELETE = "DELETE FROM table1  WHERE id = ?";
 
     Produit find(Long id);
 
     void create(Produit obj);
 
     Boolean modifier(long code, String designation, double prix);
+
+    Boolean supprime(long code);
 
     List<Produit> findAll();
 
@@ -114,6 +117,19 @@ class ProduitDAOIMPL implements ProduitDAO {
             prStm.setString(1, designation);
             prStm.setDouble(2, prix);
             prStm.setLong(3, code);
+            return (prStm.executeUpdate() == 1) ? true : false;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
+        }
+    }
+
+    @Override
+    public Boolean supprime(long code) {
+        try {
+            connection = DataConnection.getC();
+            prStm = connection.prepareStatement(SQL_DELETE);
+            prStm.setLong(1, code);
             return (prStm.executeUpdate() == 1) ? true : false;
         } catch (Exception e) {
             System.out.println(e.getMessage());
