@@ -1,5 +1,6 @@
 package app;
 
+import java.lang.reflect.Modifier;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
@@ -20,7 +21,7 @@ public class Produit {
         this.prix = prix;
     }
 
-    public Long getCode() {
+    public long getCode() {
         return code;
     }
 
@@ -52,10 +53,13 @@ interface ProduitDAO {
     static final String SQL_SELECT_ID = "SELECT * from table1 WHERE id = ?";
     static final String SQL_INSERT = "INSERT INTO table1 VALUES(null,?,?)";
     static final String SQL_SELECT_NOM = "SELECT * FROM table WHERE designiation = ?";
+    static final String SQL_UPDATE = "UPDATE table1 SET designation = ? , prix = ? WHERE id = ?";
 
     Produit find(Long id);
 
     void create(Produit obj);
+
+    Boolean modifier(long code, String designation, double prix);
 
     List<Produit> findAll();
 
@@ -99,6 +103,21 @@ class ProduitDAOIMPL implements ProduitDAO {
         } catch (Exception e) {
             System.out.println("hh");
             System.out.println(e.getMessage());
+        }
+    }
+
+    @Override
+    public Boolean modifier(long code, String designation, double prix) {
+        try {
+            connection = DataConnection.getC();
+            prStm = connection.prepareStatement(SQL_UPDATE);
+            prStm.setString(1, designation);
+            prStm.setDouble(2, prix);
+            prStm.setLong(3, code);
+            return (prStm.executeUpdate() == 1) ? true : false;
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            return false;
         }
     }
 

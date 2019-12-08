@@ -11,6 +11,7 @@ import javafx.scene.control.TableColumn;
 import javafx.scene.control.TableView;
 import javafx.scene.control.TextField;
 import javafx.scene.control.cell.PropertyValueFactory;
+import javafx.scene.input.MouseButton;
 import javafx.scene.layout.Background;
 import javafx.scene.layout.BackgroundFill;
 import javafx.scene.layout.BorderPane;
@@ -61,6 +62,7 @@ public class WindowsP extends Scene {
     public WindowsP() {
         super(new BorderPane(), WIDTH_SCENE, HEIGHT_SCENE);
         layout = (BorderPane) getRoot();
+        produitGestion = new ProduitDAOIMPL();
         initVars();
         structLayouts();
         stylingNode();
@@ -179,9 +181,51 @@ public class WindowsP extends Scene {
             produitGestion.create(p);
         });
 
+        modifier.setOnAction(e -> {
+            if (codeFld.getText().isEmpty() || designationFld.getText().isEmpty() || prixFld.getText().isEmpty()) {
+
+            } else {
+                // if()
+            }
+        });
+
+        layoutTabl.setOnMouseClicked(event -> {
+            if (event.getButton().equals(MouseButton.PRIMARY) && event.getClickCount() == 2) {
+                Produit p = layoutTabl.getSelectionModel().getSelectedItem();
+                int index = layoutTabl.getSelectionModel().getSelectedIndex();
+                codeFld.setText(String.valueOf(p.getCode()));
+                codeFld.setEditable(false);
+                designationFld.setText(p.getDesignation());
+                prixFld.setText(String.valueOf(p.getPrix()));
+                modifier.setOnAction(e -> {
+                    if (codeFld.getText().isEmpty() || designationFld.getText().isEmpty()
+                            || prixFld.getText().isEmpty()) {
+                    } else {
+                        long co = p.getCode();
+                        String dis = designationFld.getText().trim();
+                        double pr = Double.parseDouble(prixFld.getText());
+                        if (!dis.equals(p.getDesignation()) || p.getPrix() != pr) {
+                            if (produitGestion.modifier(co, dis, pr))
+                                layoutTabl.getItems().set(index, new Produit(co, dis, pr));
+                            codeFld.setText("");
+                            codeFld.setEditable(true);
+                            designationFld.setText("");
+                            prixFld.setText("");
+                            modifier.setOnAction(null);
+                        }
+                    }
+                });
+            }
+        });
+
+        supprimer.setOnAction(e -> {
+
+        });
+
         FilteredList<Produit> listFilter = new FilteredList<>(data);
         searchFld.textProperty().addListener((observable, oldValue, newValue) -> {
-            listFilter.setPredicate(produit -> newValue.isEmpty() || produit.getDesignation().toLowerCase().contains(newValue.toLowerCase()));
+            listFilter.setPredicate(produit -> newValue.isEmpty()
+                    || produit.getDesignation().toLowerCase().contains(newValue.toLowerCase()));
             layoutTabl.setItems(listFilter);
         });
     }
