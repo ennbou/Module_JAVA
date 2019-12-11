@@ -1,11 +1,8 @@
 package app;
 
-import java.lang.reflect.Modifier;
 import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
@@ -170,18 +167,4 @@ class ProduitDAOIMPL implements ProduitDAO {
         return list;
     }
 
-}
-
-final class DataConnection {
-    private static Connection c = null;
-    private static final String url = "jdbc:mysql://127.2.2.2/test_db?useSSL=false";
-    private static final String user = "ennbou";
-    private static final String password = "ennbou10";
-
-    public static Connection getC() throws SQLException {
-        if (c == null) {
-            c = DriverManager.getConnection(url, user, password);
-        }
-        return c;
-    }
 }

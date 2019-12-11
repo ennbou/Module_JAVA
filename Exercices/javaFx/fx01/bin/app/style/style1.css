@@ -1,0 +1,49 @@
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #6622CC;
+    -fx-border-color: #ffffff;
+}
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+
+.table-row-cell:selected {
+    -fx-background-color: whitesmoke;
+    -fx-text-background-color: #6622CC;
+}
+
+.total-l,
+.totalp-l,
+.reste-l {
+    -fx-max-width: 300;
+    -fx-pref-height: 50;
+    -fx-background-color: #0288D1;
+    -fx-alignment: right;
+    -fx-padding: 10;
+
+}
+
+.totalp,
+.total,
+.reste {
+    -fx-fill: #B3E5FC;
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+}
+
+.btn-l {
+    -fx-padding: 10;
+    -fx-spacing: 10
+}
+
+.btn {
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-background-color: darkslateblue;
+    -fx-text-fill: white;
+    -fx-pref-width: 100
+}

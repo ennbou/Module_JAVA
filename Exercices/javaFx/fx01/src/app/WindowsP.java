@@ -108,9 +108,6 @@ public class WindowsP extends Scene {
         designationCol.setCellValueFactory(new PropertyValueFactory<Produit, String>("designation"));
         prixCol.setCellValueFactory(new PropertyValueFactory<Produit, Double>("prix"));
 
-        codeCol.setStyle("-fx-alignment: CENTER-RIGHT;");
-        prixCol.setStyle("-fx-alignment: CENTER-RIGHT;");
-
         ProduitDAO produitGestion = new ProduitDAOIMPL();
 
         data.addAll(produitGestion.findAll());
@@ -152,6 +149,9 @@ public class WindowsP extends Scene {
                 new Background(new BackgroundFill(Color.rgb(40, 40, 40), CornerRadii.EMPTY, Insets.EMPTY)));
         layoutTitle.setPrefHeight(80);
         title.setFill(Color.WHITE);
+
+        codeCol.setStyle("-fx-alignment: CENTER-RIGHT;");
+        prixCol.setStyle("-fx-alignment: CENTER-RIGHT;");
 
     }
 
@@ -214,7 +214,7 @@ public class WindowsP extends Scene {
                         if (!dis.equals(p.getDesignation()) || p.getPrix() != pr) {
                             if (produitGestion.modifier(co, dis, pr))
                                 layoutTabl.getItems().set(index, new Produit(co, dis, pr));
-                            codeFld.setText("");
+                            codeFld.clear();
                             codeFld.setEditable(true);
                             designationFld.setText("");
                             prixFld.setText("");
@@ -252,6 +252,7 @@ public class WindowsP extends Scene {
                     || produit.getDesignation().toLowerCase().contains(newValue.toLowerCase()));
             layoutTabl.setItems(listFilter);
         });
+
     }
 
 }
