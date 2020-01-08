@@ -149,10 +149,12 @@ class ProduitDAOIMPL implements ProduitDAO {
         }
         return list;
     }
+    //SET GLOBAL general_log_file = "C:/Users/DJK/Documents/JAVA/mysql.log"
 
     @Override
     public List<Produit> findAll(String key) {
         List<Produit> list = new ArrayList<>();
+        Statement s;
         try {
             connection = DataConnection.getC();
             prStm = connection.prepareStatement(SQL_SELECT_NOM);

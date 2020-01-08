@@ -1,0 +1,10 @@
+wampmysqld64, Version: 5.7.23 (MySQL Community Server (GPL)). started with:
+TCP Port: 3306, Named Pipe: /tmp/mysql.sock
+Time                 Id Command    Argument
+wampmysqld64, Version: 5.7.23 (MySQL Community Server (GPL)). started with:
+TCP Port: 3306, Named Pipe: /tmp/mysql.sock
+Time                 Id Command    Argument
+2019-12-16T23:01:16.294000Z	    3 Query	SET GLOBAL log_output = 'TABLE'
+wampmysqld64, Version: 5.7.23 (MySQL Community Server (GPL)). started with:
+TCP Port: 3306, Named Pipe: /tmp/mysql.sock
+Time                 Id Command    Argument
