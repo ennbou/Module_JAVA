@@ -68,7 +68,7 @@ class Multiply implements Strategy {
 
 }
 
-class Context{
+class Context {
     private Strategy strategy;
 
     public Context(Strategy strategy) {
