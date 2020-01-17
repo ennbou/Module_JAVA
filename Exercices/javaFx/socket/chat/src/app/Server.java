@@ -68,4 +68,8 @@ class Server {
             e.getStackTrace();
         }
     }
+
+    synchronized static void addToSum(double sum){
+        Server.sum += sum;
+    }
 }

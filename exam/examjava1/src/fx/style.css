@@ -1,0 +1,78 @@
+.table-view .column-header,
+.table-view .column-header-background .filler {
+    -fx-background-color: #6622CC;
+    -fx-border-color: #bdbdbd78;
+}
+
+.table-view {
+    -fx-border-color: #5d5d5d;
+}
+
+
+
+.table-view .column-header .label {
+    -fx-text-fill: white;
+    -fx-font-weight: bold;
+    -fx-alignment: CENTER;
+}
+
+.table-row-cell:even {
+    -fx-background-color: rgba(102, 34, 204, 0.397);
+}
+
+.table-row-cell:selected {
+    -fx-background-color: rgb(88, 88, 88);
+    -fx-text-fill: #6622CC;
+    -fx-font-size: 14pt;
+}
+
+.title {
+    -fx-fill: rgb(255, 255, 255);
+    -fx-font-size: 16px;
+    -fx-font-weight: 700;
+
+}
+
+.title-layout {
+    -fx-pref-height: 50;
+    -fx-background-color: rgb(71, 80, 85);
+    -fx-padding: 10;
+}
+
+
+.btn {
+    -fx-font-size: 14px;
+    -fx-font-weight: 700;
+    -fx-background-color: darkslateblue;
+    -fx-text-fill: white;
+    -fx-pref-width: 100
+}
+
+.m-5 {
+    -fx-padding: 5px;
+    -fx-border-insets: 5px;
+    -fx-background-insets: 5px;
+
+}
+
+.layout {
+    -fx-background-color: rgb(255, 255, 255);
+}
+
+.layout-recherche {
+    -fx-padding: 10px;
+    -fx-background-color: rgb(88, 88, 88);
+    -fx-text-fill: white;
+}
+
+.test {
+    -fx-background-color: rgb(214, 127, 127);
+}
+
+.w-200 {
+    -fx-min-width: 200
+}
+
+.f-14 {
+    -fx-font-size: 14px;
+}
